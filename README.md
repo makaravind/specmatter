@@ -129,6 +129,7 @@ specmatter
 |-----|--------|
 | `/` | Open search (filters by title and status) |
 | `Esc` | Clear search |
+| `Enter` | Open selected spec file |
 | `↑` / `↓` | Navigate specs |
 | `r` | Reindex (refresh from disk) |
 | `q` | Quit |
