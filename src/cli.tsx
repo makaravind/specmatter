@@ -34,6 +34,13 @@ program
   .description('Open the spec dashboard')
   .action(runDashboard);
 
+program.addHelpText('after', `
+Spec file commands:
+  <spec-path> get <key>                Get a frontmatter value
+  <spec-path> set <key> <value>        Set a frontmatter value
+  <spec-path> make [--key value ...]   Add frontmatter to a file
+`);
+
 program.action(async () => {
   if (indexExists(process.cwd())) {
     await runDashboard();
