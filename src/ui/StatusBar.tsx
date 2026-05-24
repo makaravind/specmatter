@@ -18,6 +18,7 @@ export function StatusBar({ isSearching, isReindexing }: StatusBarProps) {
   return (
     <Box gap={2}>
       <Text dimColor>{isSearching ? '[Esc] Clear' : '[/] Search'}</Text>
+      <Text dimColor>[Enter] Open</Text>
       <Text dimColor>[r] Reindex</Text>
       <Text dimColor>[q] Quit</Text>
       <Text dimColor>[↑↓] Navigate</Text>

@@ -1,10 +1,18 @@
 import React, { useState, useMemo } from 'react';
 import { Box, Text, useInput, useApp } from 'ink';
+import { exec } from 'node:child_process';
+import { join } from 'node:path';
 import type { SpecIndex, SpecEntry } from '../core/types.js';
 import { writeIndex } from '../core/indexer.js';
 import { SpecTable } from './SpecTable.js';
 import { SearchBar } from './SearchBar.js';
 import { StatusBar } from './StatusBar.js';
+
+function openFile(filePath: string): void {
+  const cmd = process.platform === 'win32' ? 'start ""' :
+    process.platform === 'darwin' ? 'open' : 'xdg-open';
+  exec(`${cmd} "${filePath}"`);
+}
 
 interface AppProps {
   index: SpecIndex;
@@ -53,6 +61,11 @@ export function App({ index }: AppProps) {
         setSelectedIdx(0);
         setIsReindexing(false);
       });
+      return;
+    }
+    if (key.return && filtered.length > 0) {
+      const entry = filtered[selectedIdx];
+      openFile(join(index.root, entry.path));
       return;
     }
     if (key.upArrow) {
