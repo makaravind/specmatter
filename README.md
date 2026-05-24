@@ -2,6 +2,8 @@
 
 A CLI tool to index and browse SPEC.md files from the terminal.
 
+![demo](demo.gif)
+
 ## Install
 
 ```bash
